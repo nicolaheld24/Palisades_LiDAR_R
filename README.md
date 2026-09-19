@@ -255,7 +255,7 @@ When separated by vegetation class, the mean change was more negative in Tree/Fo
 
 ## 3. Sentinel-2 Spectral Indices
 
-The LiDAR analysis provides information on changes in vegetation structure following the fire. To complement this structural perspective, Sentinel-2 imagery was used to assess changes in vegetation condition and spectral response over time since Sentinel-2 provides spatially continuous spectral information that can be used to examine vegetation disturbance and subsequent recovery.
+The LiDAR analysis provides information on changes in vegetation structure following the fire. To complement this structural perspective, Sentinel-2 imagery was used to assess changes in vegetation condition and spectral response over time using Google Earth Engine. 
 
 The selected scenes from December 2023 to January 2026 were used to calculate NDVI and NBR. The time series provides an additional perspective on the fire impact and allows changes in vegetation condition during the subsequent recovery period to be examined.
 
@@ -279,6 +279,8 @@ Normalized Burn Ratio (NBR) was calculated for the same Sentinel-2 scenes to cha
 ![Sentinel-2 NBR](figures/palisades_fires_NBR.png)
 
 The NBR shows a pronounced spectral response to the fire. Compared with the pre-fire observations, NBR values decrease strongly in the 12 January 2025 post-fire observation. The corresponding dNBR (12 Jan 2025 − 14 Dec 2023) highlights the spatial extent of the fire-related spectral change. NBR values increase again in June 2025 and January 2026, indicating changes towards a higher post-fire spectral response.
+
+(See [`07_sentinel2_indices.js`](scripts/07_sentinel2_indices.js)).
 
 ## Limitations
 
