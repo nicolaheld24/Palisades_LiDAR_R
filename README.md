@@ -53,8 +53,6 @@ The analysis focuses on a selected area where pre- and post-fire LiDAR data are 
 - [3. Sentinel-2 Spectral Indices](#3-sentinel-2-spectral-indices)
   - [3.1 NDVI](#31-ndvi)
   - [3.2 NBR](#32-nbr)
-- [4. Limitations](#4-limitations)
-- [5. Conclusion](#5-conclusion)
 
 ## 1. Canopy Height Loss after the Palisades Fire
 ### 1.1 DSM and DTM Calculation
@@ -282,7 +280,7 @@ Normalized Burn Ratio (NBR) was calculated for the same Sentinel-2 scenes to cha
 
 The NBR shows a pronounced spectral response to the fire. Compared with the pre-fire observations, NBR values decrease strongly in the 12 January 2025 post-fire observation. The corresponding dNBR (12 Jan 2025 − 14 Dec 2023) highlights the spatial extent of the fire-related spectral change. NBR values increase again in June 2025 and January 2026, indicating changes towards a higher post-fire spectral response.
 
-### 4. Limitations
+## Limitations
 
 Several factors should be considered when interpreting the results:
 
@@ -294,9 +292,9 @@ Several factors should be considered when interpreting the results:
 - Airborne LiDAR data are generally available at much lower temporal frequency than satellite imagery, which limits their use for monitoring vegetation changes over short time periods.
 
 
-### 5. Conclusion
+## Conclusion
 
-The results show that airborne LiDAR can be used to quantify and visualize changes in vegetation structure between pre- and post-fire acquisitions. The comparison of the 2023 and 2025 datasets revealed substantial canopy height loss, with most areas showing more than 1 m of loss falling within the 2–5 m loss category. Low-height LiDAR return density also decreased across 61.4% of the analysed vegetation area, indicating a substantial reduction in low-height vegetation structure.
+The results show that airborne LiDAR can be used to quantify and visualize changes in vegetation structure between pre- and post-fire acquisitions. The comparison of the 2023 and 2025 datasets revealed substantial canopy height loss, with most areas showing more than 1 m of loss falling within the 2–5 m loss category. Low-height LiDAR return density also decreased across 61.4% of the analysed vegetation area, suggesting a substantial reduction in low-height vegetation structure.
 
 LiDAR provides important advantages for post-fire vegetation assessment through its high spatial resolution and ability to acquire data independently of cloud cover. This allows fine-scale structural changes to be mapped even when optical satellite imagery may be affected by clouds. At the same time, the relatively low temporal frequency of airborne LiDAR limits its use for continuous monitoring.
 
