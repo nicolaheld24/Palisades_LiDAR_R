@@ -287,7 +287,7 @@ Several factors should be considered when interpreting the results:
 - Low-height LiDAR return density is used as a proxy for low-height vegetation structure and does not directly represent biomass or vegetation cover.
 - NOAA C-CAP vegetation classes represent land cover from 2021 and therefore do not describe vegetation conditions at the exact time of the fire.
 - Airborne LiDAR data are generally available at much lower temporal frequency than satellite imagery, which limits their use for monitoring vegetation changes over short time periods.
-- Sentinel-2 observations are limited to selected cloud-free scenes and provide complementary spectral information rather than direct measurements of vegetation structure.
+
 
 ### 5. Conclusion
 
