@@ -74,7 +74,7 @@ Canopy height change was calculated by subtracting the 2023 CHM from the 2025 CH
 
 Negative values indicate a decrease in vegetation height between the two LiDAR acquisitions, while positive values indicate an increase.
 
-### 1.3 3D LiDAR Visualization
+### 1.3 LiDAR 3D Visualization
 
 To provide a closer look at changes in vegetation structure, selected areas were extracted from the LiDAR point clouds and visualized in CloudCompare.
 
@@ -146,13 +146,21 @@ Normalized Burn Ratio (NBR) was calculated for the same Sentinel-2 scenes to cha
 ### 4. Limitations
 
 Several factors should be considered when interpreting the results:
+Several factors should be considered when interpreting the results:
 
-- The 2023 and 2025 LiDAR datasets differ in acquisition period and point density.
+- The 2023 and 2025 LiDAR datasets differ in acquisition period and point density. The 2023 dataset has a point density of 27.8 points/m², compared with 31.5 points/m² in 2025.
 - CHM differences represent changes in vegetation height and do not directly measure biomass loss.
 - Low-height LiDAR return density is used as a proxy for low-height vegetation structure and does not directly represent biomass or vegetation cover.
 - NOAA C-CAP vegetation classes represent land cover from 2021 and therefore do not describe vegetation conditions at the exact time of the fire.
+- Airborne LiDAR data are generally available at much lower temporal frequency than satellite imagery. In this study, the most recent available pre-fire LiDAR acquisition for the study area was from December 2023, more than one year before the January 2025 fire. This limits the ability to capture vegetation conditions immediately before the fire and can reduce the timeliness of LiDAR-based analyses for future fire events.
 - Sentinel-2 observations are limited to selected cloud-free scenes and provide complementary spectral information rather than direct measurements of vegetation structure.
 
 ### 5. Conclusion
 
-The combination of LiDAR and Sentinel-2 data provides complementary information on vegetation change following the 2025 Palisades Fire. LiDAR data were used to quantify structural changes in canopy height and low-height vegetation, while Sentinel-2 NDVI and NBR provided additional information on vegetation disturbance and subsequent recovery.
+The results show that airborne LiDAR can be effectively used to quantify and visualize changes in vegetation structure following a wildfire. The comparison of pre-fire and post-fire LiDAR data allowed canopy height loss and changes in low-height vegetation structure to be mapped at a very high spatial resolution.
+
+A major advantage of LiDAR for post-fire vegetation assessment is its ability to acquire data independently of cloud cover. This can be particularly useful in the immediate aftermath of a wildfire, when optical satellite imagery such as Sentinel-2 may be limited by clouds. In addition, the 0.5 m spatial resolution of the LiDAR data allows changes in vegetation structure to be captured at a much finer scale than medium-resolution satellite imagery.
+
+Sentinel-2 complemented the LiDAR analysis by providing spectral information on vegetation condition and its changes over time. Together, the two data sources provide complementary information: LiDAR captures changes in vegetation structure, while Sentinel-2 provides information on spectral vegetation response and subsequent recovery.
+
+
