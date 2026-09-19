@@ -19,6 +19,8 @@ This project addresses the following research questions:
 
 The analysis combines airborne LiDAR data, NOAA vegetation classification, Sentinel-2 satellite imagery, and fire progression data to assess vegetation structure and change following the 2025 Palisades Fire in Southern California.
 
+The LiDAR datasets were accessed and downloaded through the [USGS National Map LiDAR Explorer](https://apps.nationalmap.gov/lidar-explorer/#/). The specific pre- and post-fire datasets used in this analysis are listed below.
+
 | Data Type | Source/Dataset | Acquisition | Notes |
 |-----------|----------------|-------------|-------|
 | LiDAR | [USGS `CA_LosAngeles_1_B23`](https://portal.opentopography.org/usgsDataset?dsid=CA_LosAngeles_1_B23) | Dec 2023 | Pre-fire airborne LiDAR |
