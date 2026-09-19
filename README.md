@@ -119,10 +119,10 @@ cc_ext <- ext(354250, 354450, 3768390, 3768590)
 las_2023_cc <- clip_rectangle(ctg_2023, 354250, 3768390, 354450, 3768590)
 las_2025_cc <- clip_rectangle(ctg_2025, 354250, 3768390, 354450, 3768590)
 ```
-
 The four visualizations show the same area before and after the fire. The larger views provide spatial context, while the zoomed views focus on a smaller area of pronounced structural change. The zoomed area was additionally outlined using a cylinder to highlight the selected section of the point cloud.
 
-All four visualizations display the LiDAR Z values using the same range from 14.1 to 58 m to allow direct visual comparison between 2023 and 2025.
+All four visualizations display the LiDAR Z values using the same range from 14.1 to 58 m to allow direct visual comparison between 2023 and 2025. The comparison shows a clear reduction in vegetation structure between the pre-fire and post-fire point clouds. In the 2023 point cloud, the selected area contains dense and vertically continuous vegetation, including several taller vegetation structures. In the 2025 point cloud, these structures are substantially reduced, with large parts of the previously vegetated area showing much lower point elevations. The visual difference is particularly apparent in the zoomed views, where the loss of vegetation height and density can be directly observed.
+
 
 #### 2023
 
@@ -198,7 +198,9 @@ area_table <- data.frame(
 
 ![CHM vegetation loss](figures/palisades_fires_chm_veg_loss_table.png)
 
-The table summarizes the area affected by different levels of structural vegetation loss in the two vegetation classes.
+The table summarizes the distribution of canopy height loss within Upland Tree and Scrub/Shrub areas. The percentages refer only to areas within each vegetation class where more than 1 m of CHM loss was detected. Therefore, the summed areas of 107.6 ha for Upland Tree and 155.4 ha for Scrub/Shrub represent the areas affected by more than 1 m of canopy height loss, rather than the total extent of the respective vegetation classes.
+
+In both vegetation classes, the largest proportion of areas with more than 1 m of canopy height loss falls within the 2–5 m loss category, accounting for 58.2% of Upland Tree areas and 52.1% of Scrub/Shrub areas. Smaller losses of 1–2 m account for 36.6% and 45.6%, respectively. Losses exceeding 5 m are relatively uncommon, but occur more frequently within Upland Tree areas (5.1%) than within Scrub/Shrub areas (2.4%).
 
 (See [`03_CHM.R`](scripts/03_CHM.R)).
 
@@ -242,7 +244,10 @@ Changes in return density were calculated between 2023 and 2025.
 
 ![Understory change](figures/palisades_fires_understory_change_table.png)
 
-The table summarizes areas with decreases, little or no change, and increases in low-height LiDAR return density.
+The understory analysis shows a predominantly negative change in low-height LiDAR return density between 2023 and 2025. Of the analysed vegetation area, 61.4% (270.3 ha) shows a decrease of more than 2 returns/m², while 34.4% (151.3 ha) shows little or no change. Only 4.2% (18.4 ha) shows an increase of more than 2 returns/m².
+
+When separated by vegetation class, the mean change was more negative in Tree/Forest areas (-9.61 returns/m²) than in Scrub/Shrub areas (-6.71 returns/m²). The results therefore indicate a substantial reduction in low-height vegetation structure across the study area following the fire. However, Class 1 return density represents a LiDAR-based proxy for low-height vegetation structure and should not be interpreted directly as vegetation biomass or cover.
+
 (See [`04_understory.R`](scripts/04_understory.R)).
 
 ## 3. Sentinel-2 Spectral Indices
