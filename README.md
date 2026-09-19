@@ -31,7 +31,7 @@ The LiDAR datasets were accessed and downloaded through the [USGS National Map L
 
 ## Study area
 
-The study area is located in the Santa Monica Mountains in Southern California, within the area affected by the 2025 Palisades Fire.
+The study area covers approximately 586.3 ha (5.86 km²) and is located in the Santa Monica Mountains in Southern California, within the area affected by the 2025 Palisades Fire.
 
 The region was selected because the fire spread rapidly through the area during the early phase of the incident. On January 8, 2025, extreme fire behavior, including short- and long-range spotting, continued to support further fire spread. The study area includes the Southern Topanga Canyon corridor, which was affected during the fire progression.
 
@@ -40,8 +40,6 @@ The fire progression shown below provides the spatial context for the selected s
 ![Palisades Fire progression](figures/fire_progression_cal_fire_management.webp)
 
 *Figure source: [The Lookout](https://the-lookout.org/2025/01/21/progression-of-the-palisades-fire/) (2025).*
-
-The analysis focuses on a selected area where pre- and post-fire LiDAR data are available, allowing vegetation structure to be compared between 2023 and 2025.
 
 ## Workflow
 - [1. Canopy Height Loss after the Palisades Fire](#1-canopy-height-loss-after-the-palisades-fire)
@@ -95,7 +93,7 @@ The figure provides an overview of the study area before and after the fire. The
 
 In the 2025 post-fire CHM, vegetation height is substantially reduced across much of the study area. Most pixels show CHM values between 0 and 2 m, while higher vegetation remains mainly along Topanga Canyon Boulevard and along another major road. Areas with CHM values above 2 m, 5 m, and locally 10 m are still present, but are considerably less extensive than in 2023. The spatial pattern therefore provides a clear visual indication of the substantial loss of vegetation height between the pre-fire and post-fire acquisitions.
 
-The marked location indicates the area selected for the subsequent 3D LiDAR visualization in CloudCompare (see 1.3 3D LiDAR visualization). This allows the spatial location of the detailed point-cloud examples to be related back to the full study area.
+The marked location indicates the area selected for the subsequent 3D LiDAR visualization in CloudCompare (see [1.3 LiDAR 3D Visualization](#13-lidar-3d-visualization)). This allows the spatial location of the detailed point-cloud examples to be related back to the full study area.
 
 In a next step, the canopy height change was calculated by subtracting the 2023 CHM from the 2025 CHM:
 
@@ -104,7 +102,7 @@ In a next step, the canopy height change was calculated by subtracting the 2023 
 chm_change_veg <- chm_2025_noaa - chm_2023_noaa
 ```
 
-![CHM change](figures/palisades_fires_chm_change.png)
+![CHM change](figures/palisades_fires_chm_change_n.png)
 
 Negative values indicate a decrease in vegetation height between the two LiDAR acquisitions, while positive values indicate an increase. 
 
