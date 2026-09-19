@@ -19,12 +19,12 @@ This project addresses the following research questions:
 
 The analysis combines airborne LiDAR data, NOAA vegetation classification, Sentinel-2 satellite imagery, and fire progression data to assess vegetation structure and change following the 2025 Palisades Fire in Southern California.
 
-| Data Type | Source/Dataset | Period/Version | Notes |
-|------------|------------|------------|--------------|
-| LiDAR | USGS `CA_LosAngeles_1_B23` | 2023 | Pre-fire airborne LiDAR |
-| LiDAR | USGS `CA_2025LosAngelesPostWildfire_C25` | 2025 | Post-fire airborne LiDAR |
+| Data Type | Source/Dataset | Acquisition | Notes |
+|-----------|----------------|-------------|-------|
+| LiDAR | USGS `CA_LosAngeles_1_B23` | Dec 2023 | Pre-fire airborne LiDAR |
+| LiDAR | USGS `CA_2025LosAngelesPostWildfire_C25` | 21 Jan 2025 | Post-fire airborne LiDAR |
 | Vegetation Classification | NOAA C-CAP | 2021 | Upland Tree and Scrub/Shrub classes |
-| Satellite Imagery | Sentinel-2 SR Harmonized | 2023–2026 | NDVI and NBR |
+| Satellite Imagery | Sentinel-2 SR Harmonized | Dec 2023–Jan 2026 | NDVI and NBR |
 
 ## Study area
 
@@ -88,9 +88,13 @@ chm_2025_noaa <- mask(chm_2025, veg_mask)
 
 ![Canopy height comparison](figures/palisades_fires_chm_2023_2025.png)
 
-The figure provides an overview of the study area before and after the fire. The marked location indicates the area selected for the subsequent 3D LiDAR visualization in CloudCompare (see 1.3 3D LiDAR visualization). This allows the spatial location of the detailed point-cloud examples to be related back to the full study area.
+The figure provides an overview of the study area before and after the fire. The visual comparison of the 2023 and 2025 CHMs shows a clear reduction in vegetation height following the fire. In the 2023 pre-fire CHM, much of the study area is characterized by vegetation heights above 2 m, with large areas ranging between 2 and 5 m and higher vegetation concentrated along Topanga Canyon Boulevard (CA-27). The taller vegetation along the road includes areas with CHM values above 5 m and locally above 10 m, reflecting the presence of larger trees. The surrounding areas are dominated by lower vegetation, including shrub-dominated areas with CHM values mainly between 2 and 5 m.
 
-Canopy height change was calculated by subtracting the 2023 CHM from the 2025 CHM:
+In the 2025 post-fire CHM, vegetation height is substantially reduced across much of the study area. Most pixels show CHM values between 0 and 2 m, while higher vegetation remains mainly along Topanga Canyon Boulevard and along another major road. Areas with CHM values above 2 m, 5 m, and locally 10 m are still present, but are considerably less extensive than in 2023. The spatial pattern therefore provides a clear visual indication of the substantial loss of vegetation height between the pre-fire and post-fire acquisitions.
+
+The marked location indicates the area selected for the subsequent 3D LiDAR visualization in CloudCompare (see 1.3 3D LiDAR visualization). This allows the spatial location of the detailed point-cloud examples to be related back to the full study area.
+
+In a next step, the canopy height change was calculated by subtracting the 2023 CHM from the 2025 CHM:
 
 ```r
 # Create change CHM between 2023 and 2025
@@ -99,7 +103,9 @@ chm_change_veg <- chm_2025_noaa - chm_2023_noaa
 
 ![CHM change](figures/palisades_fires_chm_change.png)
 
-Negative values indicate a decrease in vegetation height between the two LiDAR acquisitions, while positive values indicate an increase.
+Negative values indicate a decrease in vegetation height between the two LiDAR acquisitions, while positive values indicate an increase. 
+
+The CHM change map shows a predominantly negative change in canopy height across the study area. Most of the area is shown in orange, representing a decrease in canopy height between approximately 0 and −2.5 m. More pronounced decreases are visible along Topanga Canyon Boulevard, extending towards the coast, where orange-red areas indicate canopy height changes between approximately −5 and −2 m. These patterns correspond to the areas where taller vegetation was present in the 2023 pre-fire CHM and where substantial reductions in vegetation height are visible in the 2025 post-fire CHM.
 
 ### 1.3 LiDAR 3D Visualization
 
