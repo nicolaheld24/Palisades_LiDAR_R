@@ -276,7 +276,7 @@ Normalized Burn Ratio (NBR) was calculated for the same Sentinel-2 scenes to cha
 
 ![Sentinel-2 NBR](figures/palisades_fires_NBR.png)
 
-The NBR shows a pronounced spectral response to the fire. Compared with the pre-fire observations, NBR values decrease strongly in the 12 January 2025 post-fire observation. The corresponding dNBR (12 Jan 2025 − 14 Dec 2023) highlights the spatial extent of the fire-related spectral change. NBR values increase again in June 2025 and January 2026, indicating changes towards a higher post-fire spectral response.
+The NBR shows a pronounced spectral response to the fire. Compared with the pre-fire observations, NBR values decrease strongly in the 12 January 2025 post-fire observation. The corresponding dNBR (12 Jan 2025 − 14 Dec 2023) highlights the spatial extent of the fire-related spectral change. 
 
 (See [`07_sentinel2_indices.js`](scripts/07_sentinel2_indices.js)).
 
@@ -289,7 +289,6 @@ Several factors should be considered when interpreting the results:
 - CHM differences represent changes in vegetation height and do not directly measure biomass loss.
 - Low-height LiDAR return density is used as a proxy for low-height vegetation structure and does not directly represent biomass or vegetation cover.
 - NOAA C-CAP vegetation classes represent land cover from 2021 and therefore do not describe vegetation conditions at the exact time of the fire.
-- Airborne LiDAR data are generally available at much lower temporal frequency than satellite imagery, which limits their use for monitoring vegetation changes over short time periods.
 
 
 ## Conclusion
