@@ -13,7 +13,7 @@ This project addresses the following research questions:
 
 2. How did low-height vegetation structure change between the pre-fire and post-fire LiDAR acquisitions?
 
-3. What changes in vegetation condition and recovery can be observed from Sentinel-2 NDVI and NBR imagery following the fire?
+3. How did vegetation condition change following the fire, and is subsequent vegetation recovery visible in the Sentinel-2 time series?
 
 ## Data Sources
 
@@ -122,7 +122,9 @@ See [`04_understory.R`](scripts/04_understory.R).
 
 ### 3. Sentinel-2 Spectral Indices
 
-To complement the structural information provided by LiDAR, Sentinel-2 satellite imagery was processed in Google Earth Engine.
+The LiDAR analysis provides information on changes in vegetation structure following the fire. To complement this structural perspective, Sentinel-2 imagery was used to assess changes in vegetation condition and spectral response over time since Sentinel-2 provides spatially continuous spectral information that can be used to examine vegetation disturbance and subsequent recovery.
+
+The selected scenes from December 2023 to January 2026 were used to calculate NDVI and NBR. The time series provides an additional perspective on the fire impact and allows changes in vegetation condition during the subsequent recovery period to be examined.
 
 Two spectral vegetation indices were calculated:
 
