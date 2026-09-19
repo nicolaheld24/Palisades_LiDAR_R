@@ -268,29 +268,32 @@ Normalized Difference Vegetation Index (NDVI) was calculated for selected Sentin
 
 ![Sentinel-2 NDVI](figures/palisades_fires_NDVI.png)
 
+The NDVI time series shows a clear decrease in vegetation condition after the fire. The pre-fire observations from 14 December 2023 and 2 January 2025 show similar spatial patterns, while the 12 January 2025 post-fire observation shows substantially lower NDVI values. The difference map, dNDVI (12 Jan 2025 − 14 Dec 2023), highlights the spatial extent of this change. NDVI values increase again in June 2025 and January 2026, indicating a gradual recovery in the spectral vegetation response.
+
 ### 3.2 NBR
 Normalized Burn Ratio (NBR) was calculated for the same Sentinel-2 scenes to characterize spectral changes associated with fire disturbance and vegetation recovery.
 
 ![Sentinel-2 NBR](figures/palisades_fires_NBR.png)
 
+The NBR shows a pronounced spectral response to the fire. Compared with the pre-fire observations, NBR values decrease strongly in the 12 January 2025 post-fire observation. The corresponding dNBR (12 Jan 2025 − 14 Dec 2023) highlights the spatial extent of the fire-related spectral change. NBR values increase again in June 2025 and January 2026, indicating changes towards a higher post-fire spectral response.
+
 ### 4. Limitations
 
 Several factors should be considered when interpreting the results:
-Several factors should be considered when interpreting the results:
 
 - The 2023 and 2025 LiDAR datasets differ in acquisition period and point density. The 2023 dataset has a point density of 27.8 points/m², compared with 31.5 points/m² in 2025.
+- The 2023 LiDAR data were acquired in December 2023, more than one year before the January 2025 fire. Therefore, the LiDAR comparison does not represent vegetation conditions immediately before the fire and may include changes unrelated to the fire.
 - CHM differences represent changes in vegetation height and do not directly measure biomass loss.
 - Low-height LiDAR return density is used as a proxy for low-height vegetation structure and does not directly represent biomass or vegetation cover.
 - NOAA C-CAP vegetation classes represent land cover from 2021 and therefore do not describe vegetation conditions at the exact time of the fire.
-- Airborne LiDAR data are generally available at much lower temporal frequency than satellite imagery. In this study, the most recent available pre-fire LiDAR acquisition for the study area was from December 2023, more than one year before the January 2025 fire. This limits the ability to capture vegetation conditions immediately before the fire and can reduce the timeliness of LiDAR-based analyses for future fire events.
+- Airborne LiDAR data are generally available at much lower temporal frequency than satellite imagery, which limits their use for monitoring vegetation changes over short time periods.
 - Sentinel-2 observations are limited to selected cloud-free scenes and provide complementary spectral information rather than direct measurements of vegetation structure.
 
 ### 5. Conclusion
 
-The results show that airborne LiDAR can be effectively used to quantify and visualize changes in vegetation structure following a wildfire. The comparison of pre-fire and post-fire LiDAR data allowed canopy height loss and changes in low-height vegetation structure to be mapped at a very high spatial resolution.
+The results show that airborne LiDAR can be used to quantify and visualize changes in vegetation structure following a wildfire. The comparison of the 2023 and 2025 datasets revealed substantial canopy height loss, with most areas showing more than 1 m of loss falling within the 2–5 m loss category. Low-height LiDAR return density also decreased across 61.4% of the analysed vegetation area, indicating a substantial reduction in low-height vegetation structure.
 
-A major advantage of LiDAR for post-fire vegetation assessment is its ability to acquire data independently of cloud cover. This can be particularly useful in the immediate aftermath of a wildfire, when optical satellite imagery such as Sentinel-2 may be limited by clouds. In addition, the 0.5 m spatial resolution of the LiDAR data allows changes in vegetation structure to be captured at a much finer scale than medium-resolution satellite imagery.
+LiDAR provides important advantages for post-fire vegetation assessment through its high spatial resolution and ability to acquire data independently of cloud cover. This allows fine-scale structural changes to be mapped even when optical satellite imagery may be affected by clouds. At the same time, the relatively low temporal frequency of airborne LiDAR limits its use for continuous monitoring.
 
-Sentinel-2 complemented the LiDAR analysis by providing spectral information on vegetation condition and its changes over time. Together, the two data sources provide complementary information: LiDAR captures changes in vegetation structure, while Sentinel-2 provides information on spectral vegetation response and subsequent recovery.
-
+Sentinel-2 complemented the LiDAR analysis by providing a temporal perspective on vegetation condition. NDVI and NBR showed a pronounced spectral change immediately after the fire, followed by increasing values in the subsequent observations from June 2025 and January 2026. Together, the datasets provide complementary information: LiDAR captures changes in vegetation structure, while Sentinel-2 captures changes in spectral vegetation response over time.
 
