@@ -106,7 +106,7 @@ chm_change_veg <- chm_2025_noaa - chm_2023_noaa
 
 Negative values indicate a decrease in vegetation height between the two LiDAR acquisitions, while positive values indicate an increase. 
 
-The CHM change map shows a predominantly negative change in canopy height across the study area. Most of the area is shown in orange, representing a decrease in canopy height between approximately 0 and −2.5 m. More pronounced decreases are visible along Topanga Canyon Boulevard, extending towards the coast, where orange-red areas indicate canopy height changes between approximately −5 and −2 m. These patterns correspond to the areas where taller vegetation was present in the 2023 pre-fire CHM and where substantial reductions in vegetation height are visible in the 2025 post-fire CHM.
+The CHM change map shows a predominantly negative change in canopy height across the study area. Most of the area is shown in orange, representing a decrease in canopy height between approximately 0 and −2.5 m. More pronounced decreases are visible along Topanga Canyon Boulevard, extending towards the coast, where orange-red areas indicate canopy height changes between approximately −5 and −2.5 m. These patterns correspond to the areas where taller vegetation was present in the 2023 pre-fire CHM and where substantial reductions in vegetation height are visible in the 2025 post-fire CHM.
 
 ### 1.3 LiDAR 3D Visualization
 
@@ -247,7 +247,7 @@ Changes in return density were calculated between 2023 and 2025.
 
 The understory analysis shows a predominantly negative change in low-height LiDAR return density between 2023 and 2025. Of the analysed vegetation area, 61.4% (270.3 ha) shows a decrease of more than 2 returns/m², while 34.4% (151.3 ha) shows little or no change. Only 4.2% (18.4 ha) shows an increase of more than 2 returns/m².
 
-When separated by vegetation class, the mean change was more negative in Tree/Forest areas (-9.61 returns/m²) than in Scrub/Shrub areas (-6.71 returns/m²). The results therefore indicate a substantial reduction in low-height vegetation structure across the study area following the fire. However, Class 1 return density represents a LiDAR-based proxy for low-height vegetation structure and should not be interpreted directly as vegetation biomass or cover.
+When separated by vegetation class, the mean change was more negative in Tree/Forest areas (-9.61 returns/m²) than in Scrub/Shrub areas (-6.71 returns/m²). The results therefore suggest a substantial reduction in low-height vegetation structure across the study area following the fire. However, Class 1 return density represents a LiDAR-based proxy for low-height vegetation structure and should not be interpreted directly as vegetation biomass or cover.
 
 (See [`04_understory.R`](scripts/04_understory.R)).
 
