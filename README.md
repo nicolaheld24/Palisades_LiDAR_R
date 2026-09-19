@@ -21,20 +21,23 @@ The analysis combines airborne LiDAR data, NOAA vegetation classification, Senti
 
 | Data Type | Source/Dataset | Acquisition | Notes |
 |-----------|----------------|-------------|-------|
-| LiDAR | USGS `CA_LosAngeles_1_B23` | Dec 2023 | Pre-fire airborne LiDAR |
-| LiDAR | USGS `CA_2025LosAngelesPostWildfire_C25` | 21 Jan 2025 | Post-fire airborne LiDAR |
-| Vegetation Classification | NOAA C-CAP | 2021 | Upland Tree and Scrub/Shrub classes |
-| Satellite Imagery | Sentinel-2 SR Harmonized | Dec 2023–Jan 2026 | NDVI and NBR |
+| LiDAR | [USGS `CA_LosAngeles_1_B23`](https://portal.opentopography.org/usgsDataset?dsid=CA_LosAngeles_1_B23) | Dec 2023 | Pre-fire airborne LiDAR |
+| LiDAR | [USGS `CA_2025LosAngelesPostWildfire_C25`](https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/LPC/Projects/CA_2025LosAngelesPostWildfire_C25/CA_LAPostWildfire_Palisades_C25/LAZ/) | 21 Jan 2025 | Post-fire airborne LiDAR |
+| Vegetation Classification | [NOAA C-CAP](https://www.fisheries.noaa.gov/inport/item/70562) | 2021 | Upland Tree and Scrub/Shrub classes |
+| Satellite Imagery | [Sentinel-2 SR Harmonized](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED) | Dec 2023–Jan 2026 | NDVI and NBR |
+
 
 ## Study area
 
 The study area is located in the Santa Monica Mountains in Southern California, within the area affected by the 2025 Palisades Fire.
 
-The region was selected because the fire spread rapidly through the area during the early phase of the incident. On January 8, 2025, extreme fire behavior, including short- and long-range spotting, continued to support further fire spread. The study area includes the Topanga Canyon corridor, which was affected during the fire progression.
+The region was selected because the fire spread rapidly through the area during the early phase of the incident. On January 8, 2025, extreme fire behavior, including short- and long-range spotting, continued to support further fire spread. The study area includes the Southern Topanga Canyon corridor, which was affected during the fire progression.
 
 The fire progression shown below provides the spatial context for the selected study area.
 
 ![Palisades Fire progression](figures/fire_progression_cal_fire_management.webp)
+
+*Figure source: [The Lookout](https://the-lookout.org/2025/01/21/progression-of-the-palisades-fire/) (2025).*
 
 The analysis focuses on a selected area where pre- and post-fire LiDAR data are available, allowing vegetation structure to be compared between 2023 and 2025.
 
