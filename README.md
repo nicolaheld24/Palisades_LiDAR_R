@@ -56,11 +56,35 @@ The analysis focuses on a selected area where pre- and post-fire LiDAR data are 
 
 Digital Surface Models (DSM) and Digital Terrain Models (DTM) were generated from the 2023 and 2025 LiDAR point clouds at 1 m spatial resolution.
 
-See [`02_DSM_DTM.R`](scripts/02_DSM_DTM.R).
+```r
+# Calculate DSMs 
+dsm_2023 <- rasterize_canopy(ctg_2023, layout = template, algorithm = p2r())
+dsm_2025 <- rasterize_canopy(ctg_2025, layout = template, algorithm = p2r())
+
+# Calculate DTMs 
+dtm_2023 <- rasterize_terrain(ctg_2023, layout = template, algorithm = tin())
+dtm_2025 <- rasterize_terrain(ctg_2025, layout = template, algorithm = tin())
+```
+
+(See [`02_DSM_DTM.R`](scripts/02_DSM_DTM.R)).
 
 ### 1.2 Canopy Height Model Calculation 
 
 Canopy Height Models (CHM) were calculated as the difference between the DSM and DTM. 
+
+```r
+# Resample DSMs & DTMs 
+dsm_2023 <- resample(dsm_2023, dtm_2023, method = "bilinear")
+dsm_2025 <- resample(dsm_2025, dtm_2025, method = "bilinear")
+
+# Calculate CHMs for both years 
+chm_2023 <- dsm_2023 - dtm_2023
+chm_2025 <- dsm_2025 - dtm_2025
+
+# Mask with NOAA vegetation mask 
+chm_2023_noaa <- mask(chm_2023, veg_mask)
+chm_2025_noaa <- mask(chm_2025, veg_mask)
+```
 
 ![Canopy height comparison](figures/palisades_fires_chm_2023_2025.png)
 
@@ -68,7 +92,10 @@ The figure provides an overview of the study area before and after the fire. The
 
 Canopy height change was calculated by subtracting the 2023 CHM from the 2025 CHM:
 
-**CHM change = CHM 2025 − CHM 2023**
+```r
+# Create change CHM between 2023 and 2025
+chm_change_veg <- chm_2025_noaa - chm_2023_noaa
+```
 
 ![CHM change](figures/palisades_fires_chm_change.png)
 
@@ -76,7 +103,16 @@ Negative values indicate a decrease in vegetation height between the two LiDAR a
 
 ### 1.3 LiDAR 3D Visualization
 
-To provide a closer look at changes in vegetation structure, selected areas were extracted from the LiDAR point clouds and visualized in CloudCompare.
+To provide a closer look at changes in vegetation structure, selected areas were extracted from the LiDAR point clouds using R and visualized in CloudCompare.
+
+```r
+# Define a small area for 3D visualization
+cc_ext <- ext(354250, 354450, 3768390, 3768590)
+
+# Clip LiDAR point clouds for CloudCompare
+las_2023_cc <- clip_rectangle(ctg_2023, 354250, 3768390, 354450, 3768590)
+las_2025_cc <- clip_rectangle(ctg_2025, 354250, 3768390, 354450, 3768590)
+```
 
 The four visualizations show the same area before and after the fire. The larger views provide spatial context, while the zoomed views focus on a smaller area of pronounced structural change. The zoomed area was additionally outlined using a cylinder to highlight the selected section of the point cloud.
 
@@ -98,29 +134,112 @@ All four visualizations display the LiDAR Z values using the same range from 14.
 
 A NOAA C-CAP land-cover dataset was used to distinguish between **Upland Tree (Forest)** and **Scrub/Shrub** vegetation. Canopy height loss was compared between these vegetation classes.
 
+
+```r
+# Align NOAA land cover raster to LiDAR template
+noaa_aligned <- project(
+  noaa,
+  template,
+  method = "near"
+)
+
+# Vegetation mask
+# class 1 = trees (forest)
+# class 2 = shrubs
+veg_mask <- ifel(
+  noaa_aligned == 1 | noaa_aligned == 2,
+  1,
+  NA
+)
+```
+
 The following figure shows the NOAA mask used to define these vegetation classes within the LiDAR analysis area.
 
 ![NOAA vegetation mask](figures/palisades_fires_noaa_mask.png)
 
 The CHM change data were subsequently summarized separately for forest and shrub areas. Vegetation height loss was grouped into different severity classes based on the magnitude of CHM decrease.
 
+```r
+# Separate CHM change by vegetation class
+tree_mask <- ifel(noaa_aligned == 1, 1, NA)
+scrub_mask <- ifel(noaa_aligned == 2, 1, NA)
+
+chm_change_tree <- mask(chm_change_clean, tree_mask)
+chm_change_scrub <- mask(chm_change_clean, scrub_mask)
+
+# Calculate pixels by CHM loss severity
+tree_pixels <- c(
+  sum(values_tree < -1 & values_tree >= -2),
+  sum(values_tree < -2 & values_tree >= -5),
+  sum(values_tree < -5)
+)
+
+scrub_pixels <- c(
+  sum(values_scrub < -1 & values_scrub >= -2),
+  sum(values_scrub < -2 & values_scrub >= -5),
+  sum(values_scrub < -5)
+)
+
+# Convert pixel counts to area and percentage
+area_table <- data.frame(
+  CHM_decrease = c("-1 to -2 m", "< -2 to -5 m", "< -5 m"),
+  Tree_ha = tree_pixels / 10000,
+  Tree_percent = tree_pixels / tree_loss_total * 100,
+  Scrub_ha = scrub_pixels / 10000,
+  Scrub_percent = scrub_pixels / scrub_loss_total * 100
+)
+```
+
 ![CHM vegetation loss](figures/palisades_fires_chm_veg_loss_table.png)
 
 The table summarizes the area affected by different levels of structural vegetation loss in the two vegetation classes.
-See [`03_CHM.R`](scripts/03_CHM.R).
+
+(See [`03_CHM.R`](scripts/03_CHM.R)).
 
 ## 2. Understory Vegetation Loss 
 
 A complementary analysis focused on low-height LiDAR returns between **0.5 and 2 m above ground**. Unclassified LiDAR returns (Class 1) within this height range were used as a proxy for low-height vegetation structure.
+
+```r
+# Define understory minimum & maximum threshold
+understory_min <- 0.5
+understory_max <- 2
+
+# Select Class 1 returns between 0.5 and 2 m above ground
+keep <- las@data$Classification == 1 &
+  !is.na(las@data$Z_norm) &
+  las@data$Z_norm >= understory_min &
+  las@data$Z_norm < understory_max
+
+las <- las[keep]
+
+# Calculate understory return density at 1 m resolution
+rasterize_density(las, res = 1)
+
+# Apply NOAA vegetation mask
+understory_2023_veg <- mask(understory_2023, veg_mask)
+understory_2025_veg <- mask(understory_2025, veg_mask)
+
+# Calculate understory change between 2023 and 2025
+understory_change <- understory_2025_veg - understory_2023_veg
+
+# 1 = Decrease (< -2 returns/m²)
+# 2 = Little/no change (-2 to +2 returns/m²)
+# 3 = Increase (> +2 returns/m²)
+understory_change_class <- ifel(
+  understory_change < -2, 1,
+  ifel(understory_change <= 2, 2, 3)
+)
+```
 
 Changes in return density were calculated between 2023 and 2025.
 
 ![Understory change](figures/palisades_fires_understory_change_table.png)
 
 The table summarizes areas with decreases, little or no change, and increases in low-height LiDAR return density.
-See [`04_understory.R`](scripts/04_understory.R).
+(See [`04_understory.R`](scripts/04_understory.R)).
 
-### 3. Sentinel-2 Spectral Indices
+## 3. Sentinel-2 Spectral Indices
 
 The LiDAR analysis provides information on changes in vegetation structure following the fire. To complement this structural perspective, Sentinel-2 imagery was used to assess changes in vegetation condition and spectral response over time since Sentinel-2 provides spatially continuous spectral information that can be used to examine vegetation disturbance and subsequent recovery.
 
@@ -133,12 +252,12 @@ Two spectral vegetation indices were calculated:
 
 These indices provide complementary information on vegetation condition and spectral changes associated with the fire.
 
-#### 3.1 NDVI
+### 3.1 NDVI
 Normalized Difference Vegetation Index (NDVI) was calculated for selected Sentinel-2 scenes between December 2023 and January 2026 to examine changes in vegetation condition over time.
 
 ![Sentinel-2 NDVI](figures/palisades_fires_NDVI.png)
 
-#### 3.2 NBR
+### 3.2 NBR
 Normalized Burn Ratio (NBR) was calculated for the same Sentinel-2 scenes to characterize spectral changes associated with fire disturbance and vegetation recovery.
 
 ![Sentinel-2 NBR](figures/palisades_fires_NBR.png)
