@@ -86,7 +86,7 @@ chm_2023_noaa <- mask(chm_2023, veg_mask)
 chm_2025_noaa <- mask(chm_2025, veg_mask)
 ```
 
-![Canopy height comparison](figures/palisades_fires_chm_2023_2025.png)
+![Canopy height comparison](figures/palisades_fires_chm_2023_2025_n.png)
 
 The figure provides an overview of the study area before and after the fire. The visual comparison of the 2023 and 2025 CHMs shows a clear reduction in vegetation height following the fire. In the 2023 pre-fire CHM, much of the study area is characterized by vegetation heights above 2 m, with large areas ranging between 2 and 5 m and higher vegetation concentrated along Topanga Canyon Boulevard (CA-27). The taller vegetation along the road includes areas with CHM values above 5 m and locally above 10 m, reflecting the presence of larger trees. The surrounding areas are dominated by lower vegetation, including shrub-dominated areas with CHM values mainly between 2 and 5 m.
 
