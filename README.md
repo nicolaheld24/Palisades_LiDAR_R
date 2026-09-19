@@ -14,7 +14,7 @@ The region was selected because the fire spread rapidly through the area during 
 
 The fire progression shown below provides the spatial context for the selected study area.
 
-![Palisades Fire progression](figures/fire_progression_cal_fire_management.png)
+![Palisades Fire progression](figures/fire_progression_cal_fire_management.webp)
 
 The analysis focuses on a selected area where pre- and post-fire LiDAR data are available, allowing vegetation structure to be compared between 2023 and 2025.
 
