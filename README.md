@@ -59,7 +59,7 @@ The analysis focuses on a selected area where pre- and post-fire LiDAR data are 
 ## 1. Canopy Height Loss after the Palisades Fire
 ### 1.1 DSM and DTM Calculation
 
-Digital Surface Models (DSM) and Digital Terrain Models (DTM) were generated from the 2023 and 2025 LiDAR point clouds at 1 m spatial resolution.
+The LiDAR processing was carried out in R using the `lidR` and `terra` packages. `lidR` was used for LiDAR point-cloud processing, terrain and canopy surface modelling, and rasterization, while `terra` was used for raster processing, masking, resampling, and spatial alignment. DSMs and DTMs were generated from the 2023 and 2025 point clouds at 1 m spatial resolution.
 
 ```r
 # Calculate DSMs 
